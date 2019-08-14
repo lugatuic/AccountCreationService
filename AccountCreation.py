@@ -25,3 +25,4 @@ class SignupForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(), Email()])
     uin = IntegerField('UIN', validators=[DataRequired()])
     major = StringField('Major', validators=[DataRequired()])
+    submit = SubmitField('Sign Up')
