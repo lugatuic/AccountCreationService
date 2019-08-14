@@ -1,5 +1,11 @@
-import flask
+from flask import Flask
 import mysql.connector
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
+
+app = Flask(__name__)
 
 db = mysql.connector.connect(
     host="localhost",
@@ -7,4 +13,3 @@ db = mysql.connector.connect(
     passwd="password",
     database="LUGDB"
 )
-
