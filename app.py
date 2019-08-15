@@ -1,7 +1,7 @@
 from flask import Flask
 import mysql.connector
 
-from SignupForm import SignupForm
+from signupform import SignupForm
 
 app = Flask(__name__)
 
