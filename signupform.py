@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, IntegerField, SubmitField
+from wtforms import StringField, PasswordField, IntegerField, SelectField, SubmitField
 from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 class SignupForm(FlaskForm):
@@ -12,5 +12,5 @@ class SignupForm(FlaskForm):
     netid = StringField('netID', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired(), Email()])
     uin = IntegerField('UIN', validators=[DataRequired()])
-    major = StringField('Major', validators=[DataRequired()])
+    major = SelectField('Major', choices=[('cs', 'Computer Science'), ('ce', 'Computer Engineering')], validators=[DataRequired()])
     submit = SubmitField('Sign Up')
