@@ -5,7 +5,6 @@ from signupform import SignupForm
 
 app = Flask(__name__)
 
-db = DB()
 
 app.config.update(dict(
     SECRET_KEY="I don't see why this is necessary",
@@ -16,5 +15,5 @@ app.config.update(dict(
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
-        db.create_account(form)
+        DB().create_account(form)
     return render_template('signup.html', title='Sign Up', form=form)
