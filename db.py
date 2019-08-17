@@ -1,4 +1,5 @@
 import mysql.connector
+from wtforms.validators import ValidationError
 
 def connect():
     return mysql.connector.connect(
@@ -22,11 +23,16 @@ def create_account(form):
         print(x)
 
 #A validator for WTForms
-class no_dupes(object):
-    def __init__(self, column, message):
+class NoDupes(object):
+    def __init__(self, column, table, message="Already exists in database."):
         self.column = column
+        self.table = table
         self.message = message
 
     def __call__(self, form, field):
         conn = connect()
         cur = conn.cursor()
+        cur.execute("SELECT {0} FROM {1} WHERE {0} = '{2}';".format(self.column, self.table, field.data))
+        print(cur.rowcount)
+        if len(cur.fetchall()) > 0:
+            raise ValidationError(self.message)
