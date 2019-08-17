@@ -23,9 +23,11 @@ lugdataSQL = "INSERT INTO LUGDATA (UIN, lugUserName, password) VALUES (%s, %s, %
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()
-    if form.validate_on_submit():
+    if form.is_submitted():
         cur = db.cursor()
-        cur.execute(memberSQL, (form.lastname, form.firstname, form.prefname, form.netid, form.email, form.uin, form.major))
-        cur.execute(lugdataSQL, (form.uin, form.username, form.password))
-        cur.commit()
+        cur.execute(memberSQL, (form.lastname.data, form.firstname.data, form.prefname.data, form.netid.data, form.email.data, form.uin.data, form.major.data))
+        cur.execute(lugdataSQL, (form.uin.data, form.username.data, form.password.data))
+        db.commit()
+        for x in cur:
+            print(x)
     return render_template('signup.html', title='Sign Up', form=form)
