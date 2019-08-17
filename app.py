@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from db import DB
+from db import create_account
 from signupform import SignupForm
 
 app = Flask(__name__)
@@ -15,5 +15,5 @@ app.config.update(dict(
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
-        DB().create_account(form)
+        create_account(form)
     return render_template('signup.html', title='Sign Up', form=form)
