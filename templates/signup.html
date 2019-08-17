@@ -9,42 +9,72 @@
             <p>
                 {{ form.username.label }}<br>
                 {{ form.username(size=32) }}
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.password.label }}<br>
                 {{ form.password(size=32) }}
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.confirmpass.label }}<br>
                 {{ form.confirmpass(size=32) }}
+                {% for error in form.confirmpass.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.firstname.label }}<br>
                 {{ form.firstname(size=32) }}
+                {% for error in form.firstname.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.lastname.label }}<br>
                 {{ form.lastname(size=32) }}
+                {% for error in form.lastname.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.prefname.label }}<br>
                 {{ form.prefname(size=32) }}
+                {% for error in form.prefname.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.netid.label }}<br>
                 {{ form.netid(size=32) }}
+                {% for error in form.netid.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.email.label }}<br>
                 {{ form.email(size=32) }}
+                {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.uin.label }}<br>
                 {{ form.uin(size=32) }}
+                {% for error in form.uin.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.major.label }}<br>
                 {{ form.major }}
+                {% for error in form.major.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </p>
             <p>
                 {{ form.submit() }}
