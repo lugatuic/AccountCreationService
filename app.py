@@ -16,4 +16,5 @@ def signup():
     form = SignupForm()
     if form.validate_on_submit():
         create_account(form)
+        return render_template('success.html')
     return render_template('signup.html', title='Sign Up', form=form)
