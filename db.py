@@ -19,6 +19,7 @@ def create_account(form):
     cur.execute(memberSQL, (form.lastname.data, form.firstname.data, form.prefname.data, form.netid.data, form.email.data, form.uin.data, form.major.data, date.today()))
     cur.execute(lugdataSQL, (form.uin.data, form.username.data, form.password.data))
     conn.commit()
+    conn.close()
 
 #A validator for WTForms
 class NoDupes(object):
@@ -33,3 +34,4 @@ class NoDupes(object):
         cur.execute("SELECT {0} FROM {1} WHERE {0} = '{2}';".format(self.column, self.table, field.data))
         if len(cur.fetchall()) > 0:
             raise ValidationError(self.message)
+        conn.close()
